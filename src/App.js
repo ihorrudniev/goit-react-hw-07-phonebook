@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { connect } from 'react-redux';
-import ContactsForm from './components/ContactForm';
-import ContactsList from './components/ContactList/ContactList.js';
-import ContactsListItem from './components/ContactList/ContactListItem.js';
-import Container from './components/Container';
-import Filter from './components/Filter/Filter';
-
+import ContactsForm from "./components/ContactForm";
+// import ContactsList from "./components/ContactList/ContactList.js";
+import ContactsListItem from "./components/ContactList/ContactListItem.js";
+import Container from "./components/Container";
+import Filter from "./components/Filter/Filter";
 
 class App extends Component {
   // state = {
@@ -81,9 +80,9 @@ class App extends Component {
         <div>
           <h2>Contacts</h2>
           <Filter />
-          <ContactsList>
-            <ContactsListItem />
-          </ContactsList>
+          {/* <ContactsList> */}
+          <ContactsListItem />
+          {/* </ContactsList> */}
         </div>
       </Container>
     );

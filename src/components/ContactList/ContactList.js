@@ -1,13 +1,13 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const ContactsList = ({ children }) => (
-  <ul>
-    {children}
-    </ul>
-);
+// const ContactsList = ({ children }) => (
+//   <ul>
+//     {children}
+//     </ul>
+// );
 
-ContactsList.prototype = {
-  children: PropTypes.node,
-};
+// ContactsList.prototype = {
+//   children: PropTypes.node,
+// };
 
-export default ContactsList;
+// export default ContactsList;

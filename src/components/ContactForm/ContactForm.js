@@ -1,33 +1,34 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import contactsOperations from "../../redux/operations";
-import PropsType from "prop-types";
-import shortid from "shortid";
-import "./Form.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import contactsOperations from '../../redux/operations';
+import PropsType from 'prop-types';
+import { getContacts } from '../../redux/selectors';
+import shortid from 'shortid';
+import './Form.css';
 
 class ContactsForm extends Component {
   initialState = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
   };
 
   state = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
   };
 
   nameInputId = shortid.generate();
   numberInputId = shortid.generate();
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
-    const hasContacts = (contact) =>
+    const hasContacts = contact =>
       contact.name === this.state.name || contact.number === this.state.number;
 
     if (this.props.items.some(hasContacts)) {
@@ -88,11 +89,11 @@ ContactsForm.PropsType = {
   onSubmit: PropsType.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  items: state.contacts.items,
+const mapStateToProps = state => ({
+  items: getContacts(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onSubmit: ({ name, number }) =>
     dispatch(contactsOperations.addContact({ name, number })),
 });
