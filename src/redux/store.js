@@ -1,6 +1,5 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import logger from "redux-logger";
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import reducer from './reducer';
 import {
   FLUSH,
   REHYDRATE,
@@ -8,9 +7,14 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from 'redux-persist';
 
-import contactsReducer from "./reducer";
+/////for local storage
+// const contactsPersistConfig = {
+//   key: 'contacts',
+//   storage,
+//   blacklist: ['filter'],
+// };
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -18,21 +22,12 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
 ];
 
-// const contactsPersistConfig = {
-//   key: "contacts",
-//   storage,
-//   blacklist: ["filter"],
-// };
-
 const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-  },
+  reducer: { contacts: reducer },
   middleware,
-  devToolss: process.env.NODE_ENV === "development",
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 // const persistor = persistStore(store);
